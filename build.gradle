@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'org.springframework.boot' version '4.0.1'
+//    id 'org.springframework.boot' version '3.4.1'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -10,7 +11,7 @@ description = 'board01'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(22)
     }
 }
 
@@ -25,15 +26,31 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+//    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.0'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    //Tools
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
-    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:4.0.0'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    //JSP / JSTL Settings
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper'
+    implementation 'jakarta.servlet:jakarta.servlet-api' //스프링부트 3.0 이상
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' //스프링부트 3.0 이상
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' // 스프링부트 3.0 이상
+
+    //Test Settings
+//    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:4.0.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
 }
 
 tasks.named('test') {

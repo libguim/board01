@@ -6,7 +6,7 @@ pageEncoding="UTF-8" %>
     <div class="card">
         <div class="card-body">
             <div class="card-title">게시글 등록</div>
-            <form method="post" action="/board/register">
+            <form>
                 <div class="mb-3">
                     <label for="bno" class="form-label">Bno</label>
                     <input type="hidden" class="form-control" name="bno" id="bno" value="${board.bno}" readonly>

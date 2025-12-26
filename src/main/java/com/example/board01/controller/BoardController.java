@@ -50,8 +50,8 @@ public class BoardController {
     public String modifyPost(BoardDTO boardDTO) {
         log.info("modifyPost");
         boardService.modify(boardDTO);
-//        return "redirect:/board/modify?bno=" + boardDTO.getBno();
-        return "redirect:/board/list";
+        return "redirect:/board/read?bno=" + boardDTO.getBno();
+//        return "redirect:/board/list";
     }
 
     @GetMapping("/remove")

@@ -2,13 +2,10 @@
 pageEncoding="UTF-8" %>
 <%@include file="../includes/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<input type="hidden" name="postdate" value="<fmt:formatDate value='${board.postdate}' pattern='yyyy-MM-dd'/>" readonly>
-
 <div class="row-content">
     <div class="card">
         <div class="card-body">
-            <div class="card-title">게시글 등록</div>
+            <div class="card-title">게시글 수정</div>
             <form method="post" action="/board/register">
                 <div class="mb-3">
                     <label for="bno" class="form-label">Bno</label>
@@ -63,7 +60,7 @@ pageEncoding="UTF-8" %>
                     e.preventDefault()
                     e.stopPropagation()
 
-                    formObj.action ="/board/modify"
+                    formObj.action =`/board/modify?bno=${board.bno}`
                     formObj.method ="post"
 
                     formObj.submit()
